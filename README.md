@@ -1,2 +1,4 @@
-# eleventy-docs-starter
-A starter kit for making a documentation website using Eleventy
+# Eleventy documentation starters
+
+A collection of Eleventy starters for creating documentation sites.
+
