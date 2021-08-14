@@ -1,12 +1,22 @@
-// Docs:
+// DOCS:
 module.exports = {
     site_name: "Eleventy Documentation Starters",
     description: "A collection of Eleventy starters for creating documentation sites.",
-    keywords: "test",
+    keywords: ["documentation", "eleventy"],
     url: "",
-    buildTime : new Date(),
+    // Set the output directory
+    output: "dist",
+    /* Choose a theme. Valid options are:
+       blank
+       minimalist
+
+    */    
+    theme: {
+        name: "blank"
+    },
     // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.
     // Docs: 
     prism_theme: "custom",
-    prism_file: "a11y-dark"
+    prism_file: "a11y-dark",
+    build_time : new Date()
 };

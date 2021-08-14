@@ -1,11 +1,15 @@
+const config = require("./src/_data/config.js");
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+   
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPassthroughCopy('src/css');
-    eleventyConfig.addPassthroughCopy('src/js');
+    eleventyConfig.addPassthroughCopy('src/extra_css');
+    eleventyConfig.addPassthroughCopy('src/extra_js');
     eleventyConfig.addPassthroughCopy('src/images');
     eleventyConfig.addPassthroughCopy('src/documents');
+    eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/css`);
+    eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/js`);
     eleventyConfig.setDataDeepMerge(true);
 
     eleventyConfig.addPlugin(syntaxHighlight);
@@ -31,6 +35,10 @@ module.exports = function(eleventyConfig) {
         return Math.min.apply(null, numbers);
     });
 
+
+
+   
+
     return {
         markdownTemplateEngine: "njk",
         htmlTemplateEngine: "njk",
@@ -38,7 +46,8 @@ module.exports = function(eleventyConfig) {
         passthroughFileCopy: true,
         dir: {
             input: "src",
-            output: "docs"
+            output: config.output,
+            includes: config.theme.name
         }
     }
 };

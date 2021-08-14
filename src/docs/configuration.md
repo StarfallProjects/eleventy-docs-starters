@@ -4,26 +4,27 @@ title: Configure your site
 
 There are two main places where you can configure your site:
 
-* In the `_data` directory.
+* In `_data/config.js`.
 * In the frontmatter of individual content files.
 
 ## The _data directory
 
-### layout.js
+### Theme
+
+Set a theme:
 
 ```js
-module.exports = "layouts/<theme-name>.njk"
+theme: <theme-name>
 ```
 
-Options:
+Options are:
 
-* base: Use the base template with no styling.
-* plain:
-
-This file controls just one configuration option: your theme choice. Due to how Eleventy looks for layout files, this has to be in its own configuration file (rather than the general `config.js`). Refer to [this GitHub issue](https://github.com/11ty/eleventy/issues/380#issuecomment-568033456) for a detailed explanation.
+* `blank`: this theme has no styling. It provides documentation features, with the absolute minimum markup. Use this if you want to create your own custom look and feel.
+* `minimalist`: 
 
 
-Do not edit `utils.js`.
+
+Do not edit `utils.js` or `layout.js`.
 
 ## Frontmatter
 

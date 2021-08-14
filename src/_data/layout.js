@@ -1,2 +1,3 @@
-// Docs:
-module.exports = "layouts/plain.njk"
+// DO NOT EDIT
+// DOCS:
+module.exports = "layouts/base.njk"

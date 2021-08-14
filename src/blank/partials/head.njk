@@ -8,19 +8,12 @@
     <meta name="Keywords" content="{{ config.keywords or tags }}">
     {% switch config.prism_theme %}
       {% case "custom" %}
-        <link href="/css/prism/{{ config.prism_file }}.css" rel="stylesheet">
+        <link href="/extra_css/prism/{{ config.prism_file }}.css" rel="stylesheet">
       {% case "" %}
 
       {% default %}
         <link href="https://unpkg.com/prismjs@1.20.0/themes/{{ config.prism_theme }}.css" rel="stylesheet">
-    {% endswitch %}
-    {% switch layout %}
-      {% case "layouts/base.njk" %}
-        <link rel="stylesheet" type="text/css" href="/css/base.css" />
-      {% case "layouts/plain.njk" %}
-        <link rel="stylesheet" type="text/css" href="/css/plain.css" />
-      {% default %}
-        <link rel="stylesheet" type="text/css" href="/css/base.css" />
-    {% endswitch %}
+    {% endswitch %}        
+    <link rel="stylesheet" type="text/css" href="/blank/css/styles.css" />
   </head>
   
