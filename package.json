@@ -23,9 +23,7 @@
   "homepage": "https://github.com/StarfallProjects/eleventy-docs-starter#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "cross-env": "^7.0.3"
-  },
-  "dependencies": {
-
   }
 }

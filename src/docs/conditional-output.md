@@ -5,7 +5,7 @@ Conditional outputs allow you to change how you output your content depending on
 ## Quickstart
 
 ```js
-// `_data/config.js`
+// `_data/utils.js`
 module.exports = {
     'output': process.env.OUTPUT
 };
@@ -14,7 +14,7 @@ module.exports = {
 ```js
 // `index.md`
 {% raw %}
-{% if config.output == "draft" %}
+{% if utils.output == "draft" %}
 Draft text
 {% endif %}
 {% endraw %}
@@ -64,7 +64,7 @@ This may sound complicated. What it means is:
 - Your templates can check for those variables and take action based on the values.
 
 In the example above, we:
-1. Create an environment variable named `OUTPUT` in the `_data/config.js` file.
+1. Create an environment variable named `OUTPUT` in the `_data/utils.js` file.
 2. Check the value of the variable in the `index.md` file.
 3. If the value of the variable is `draft`, we show the draft content.
 4. Build the site, setting the value of `OUTPUT` to `draft`.

@@ -1,4 +1,5 @@
 const { DateTime } = require("luxon");
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 
 module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('src/css');
@@ -6,6 +7,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('src/images');
     eleventyConfig.addPassthroughCopy('src/documents');
     eleventyConfig.setDataDeepMerge(true);
+
+    eleventyConfig.addPlugin(syntaxHighlight);
 
     // Date formats
     eleventyConfig.addFilter("readableDate", dateObj => {

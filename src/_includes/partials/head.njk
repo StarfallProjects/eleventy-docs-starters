@@ -3,9 +3,24 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ renderData.title or title or metadata.title }}</title>
-    <meta name="Description" content="{{ renderData.description or description or metadata.description }}">
-    <meta name="Keywords" content="{{ renderData.tags or tags or metadata.tags }}">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
+    <title>{{ config.site_name or title }}</title>
+    <meta name="Description" content="{{ config.description or description }}">
+    <meta name="Keywords" content="{{ config.keywords or tags }}">
+    {% switch config.prism_theme %}
+      {% case "custom" %}
+        <link href="/css/prism/{{ config.prism_file }}.css" rel="stylesheet">
+      {% case "" %}
+
+      {% default %}
+        <link href="https://unpkg.com/prismjs@1.20.0/themes/{{ config.prism_theme }}.css" rel="stylesheet">
+    {% endswitch %}
+    {% switch layout %}
+      {% case "layouts/base.njk" %}
+        <link rel="stylesheet" type="text/css" href="/css/base.css" />
+      {% case "layouts/plain.njk" %}
+        <link rel="stylesheet" type="text/css" href="/css/plain.css" />
+      {% default %}
+        <link rel="stylesheet" type="text/css" href="/css/base.css" />
+    {% endswitch %}
   </head>
   
