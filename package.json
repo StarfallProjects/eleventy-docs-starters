@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env ELEVENTY_ENV=dev eleventy --serve",
-    "build": "cross-env ELEVENTY_ENV=prod eleventy",
+    "dev": "cross-env OUTPUT=draft eleventy --serve",
+    "prod": "cross-env OUTPUT=prod eleventy --serve",
+    "build": "cross-env OUPUT=prod eleventy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,9 +23,7 @@
   "homepage": "https://github.com/StarfallProjects/eleventy-docs-starter#readme",
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
     "cross-env": "^7.0.3"
-  },
-  "dependencies": {
-
   }
 }

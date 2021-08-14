@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eleventy Documentation Starters</title>
+    <meta name="Description" content="A collection of Eleventy starters for creating documentation sites.">
+    <meta name="Keywords" content="test">
+    
+        <link href="/css/prism/a11y-dark.css" rel="stylesheet">
+      
+    
+        <link rel="stylesheet" type="text/css" href="/css/plain.css" />
+      
+  </head>
+  
+<body>
+<main>
+<h1>Syntax highlighting</h1>
+<h2>Syntax highlighting with Prism</h2>
+
+<p>Syntax highlighting uses the <a href="https://www.11ty.dev/docs/plugins/syntaxhighlight/">Eleventy Syntax Highlighting Plugin</a>, which in turn relies on <a href="https://prismjs.com/">Prism</a>.</p>
+<h2>Use one of Prism's main themes from CDN</h2>
+<p>Enter the Prism theme name in <code>config.js</code>. The theme loads from a CDN.</p>
+<pre class="language-js"><code class="language-js">prism_theme<span class="token operator">:</span> <span class="token string">"&lt;theme-name>"</span></code></pre>
+<p>Valid names are:</p>
+<ul>
+<li><code>prism</code> (corresponds to &quot;Default&quot; on Prism's demo page)</li>
+<li><code>prism-dark</code></li>
+<li><code>prism-funky</code></li>
+<li><code>prism-okaidia</code></li>
+<li><code>prism-twilight</code></li>
+<li><code>prism-coy</code></li>
+<li><code>prism-solarizedlight</code></li>
+<li><code>prism-tomorrow</code> (corresponds to &quot;Tomorrow Night&quot; on Prism's demo page)</li>
+</ul>
+<p>You can see previews of these themes on the <a href="https://prismjs.com/download.html">Prism Download</a> page.</p>
+<h2>Use a local CSS file</h2>
+<p>If you don't want to load the CSS from a CDN, you can download it. There are also many additional community-contributed themes to choose from, and this method allows you to use them.</p>
+<ol>
+<li>Download the CSS file.</li>
+<li>Place the file in <code>/css/prism</code>.</li>
+<li>Add the file name to <code>config.js</code>:<pre class="language-js"><code class="language-js">prism_file<span class="token operator">:</span> <span class="token string">"&lt;filename>"</span></code></pre>
+Do not include the extension:<pre class="language-js"><code class="language-js"><span class="token comment">// this is correct</span><br>prism_file<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">a11y-dark</span><span class="token template-punctuation string">`</span></span><br><span class="token comment">// this will break</span><br>prism_file<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">a11y-dark.css</span><span class="token template-punctuation string">`</span></span></code></pre>
+</li>
+<li>Set <code>prism_theme</code> to <code>custom</code>:<pre class="language-js"><code class="language-js">prism_theme<span class="token operator">:</span> <span class="token string">"custom"</span></code></pre>
+</li>
+</ol>
+<p>Some theme lists:</p>
+<ul>
+<li><a href="https://github.com/PrismJS/prism-themes">PrismJS/prism-themes</a></li>
+<li><a href="https://github.com/ericwbailey/a11y-syntax-highlighting">An a11y-friendly theme</a></li>
+</ul>
+
+
+</main>
+
+<script src="/js/main.js"></script>
+</body>
