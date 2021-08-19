@@ -7,8 +7,8 @@ module.exports = {
     // Set the output directory
     output: "dist",
     /* Choose a theme. Valid options are:
-       blank
-       minimalist
+       theme-blank
+       theme-minimalist
 
     */    
     theme: {

@@ -32,7 +32,7 @@ You can see previews of these themes on the [Prism Download](https://prismjs.com
 If you don't want to load the CSS from a CDN, you can download it. There are also many additional community-contributed themes to choose from, and this method allows you to use them.
 
 1. Download the CSS file.
-2. Place the file in `/css/prism`.
+2. Place the file in `/extra_css/prism`.
 3. Add the file name to `config.js`:
     ```js
     prism_file: "<filename>"
