@@ -12,7 +12,8 @@ module.exports = {
 
     */    
     theme: {
-        name: "blank"
+        name: "theme-blank",
+        alternateLayout: "layouts/test.njk"
     },
     // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.
     // Docs: 
