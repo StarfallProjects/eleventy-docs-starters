@@ -41,23 +41,28 @@ module.exports = function(eleventyConfig) {
 
 
     eleventyConfig.on('afterBuild', () => {
-        let data = fs.readFileSync(`${config.output}/search.json`,'utf-8');
-        let docs = JSON.parse(data);
 
-        let idx = lunr(function () {
-            this.ref('url');
-            this.field('title');
-            this.field('description')
-            this.field('keywords')
-            this.field('body');
-    
-            docs.forEach(function (doc, idx) {
-                doc.id = idx;
-                this.add(doc); 
-            }, this);
-        });
-    
-        fs.writeFileSync(`${config.output}/index.json`, JSON.stringify(idx));
+        // implement search using Lunr.js
+        if(config.enable_search && !config.disable_lunr) {
+            let data = fs.readFileSync(`${config.output}/search.json`,'utf-8');
+            let docs = JSON.parse(data);
+
+            let idx = lunr(function () {
+                this.field('title');
+                this.field('description')
+                this.field('keywords')
+                if(config.body_search) {
+                    this.field('body');
+                }
+        
+                docs.forEach(function (doc, idx) {
+                    doc.id = idx;
+                    this.add(doc); 
+                }, this);
+            });
+        
+            fs.writeFileSync(`${config.output}/index.json`, JSON.stringify(idx));
+        }
     });
    
 

@@ -3,9 +3,10 @@ permalink: search.json
 eleventyExcludeFromCollections: true
 layout: ""
 ---
+{% if config.enable_search %}
 [
-    {%- for page in collections.all -%}
-      {%- if page.data.layout %}
+    {% for page in collections.all %}
+      {% if page.data.layout %}
       {
         "url": "{{ page.url }}",
         "title": "{{ page.data.title }}",
@@ -14,6 +15,7 @@ layout: ""
         "body": "{{ page.templateContent | squash }}"
       }
       {% if not loop.last %},{% endif %}
-      {%- endif -%}
-    {%- endfor -%}
+      {% endif %}
+    {% endfor %}
     ]
+{% endif %}

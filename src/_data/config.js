@@ -19,5 +19,13 @@ module.exports = {
     // Docs: 
     prism_theme: "custom",
     prism_file: "a11y-dark",
-    build_time : new Date()
+    build_time : new Date(),
+    // Search options
+    // Docs: 
+    // By default, search runs on titles, keywords, and descriptions.
+    // To include the full body of documents in the search, set body_search to true
+    // WARNING: this will greatly increase the size of the search index
+    enable_search: true,
+    body_search: false,
+    disable_lunr: false
 };
