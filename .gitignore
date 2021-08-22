@@ -1,5 +1,7 @@
 /node_modules
 /dist
 /docs
+/src/test
 
 package-lock.json
+generatetest.ps1

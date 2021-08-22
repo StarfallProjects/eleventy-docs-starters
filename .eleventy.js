@@ -1,5 +1,7 @@
 const config = require("./src/_data/config.js");
 const { DateTime } = require("luxon");
+const fs = require('fs');
+const lunr = require('lunr');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
    
 
@@ -35,8 +37,28 @@ module.exports = function(eleventyConfig) {
         return Math.min.apply(null, numbers);
     });
 
+    eleventyConfig.addFilter("squash", require(`./utils/squash.js`) );
 
 
+    eleventyConfig.on('afterBuild', () => {
+        let data = fs.readFileSync(`${config.output}/search.json`,'utf-8');
+        let docs = JSON.parse(data);
+
+        let idx = lunr(function () {
+            this.ref('url');
+            this.field('title');
+            this.field('description')
+            this.field('keywords')
+            this.field('body');
+    
+            docs.forEach(function (doc, idx) {
+                doc.id = idx;
+                this.add(doc); 
+            }, this);
+        });
+    
+        fs.writeFileSync(`${config.output}/index.json`, JSON.stringify(idx));
+    });
    
 
     return {
