@@ -7,13 +7,12 @@ module.exports = {
     // Set the output directory
     output: "dist",
     /* Choose a theme. Valid options are:
-       theme-blank
-       theme-minimalist
+       _theme_blank
+       _theme_minimalist
 
     */    
     theme: {
-        name: "theme-blank",
-        alternateLayout: "layouts/test.njk"
+        name: "_theme_blank"
     },
     // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.
     // Docs: 
@@ -22,10 +21,13 @@ module.exports = {
     build_time : new Date(),
     // Search options
     // Docs: 
-    // By default, search runs on titles, keywords, and descriptions.
-    // To include the full body of documents in the search, set body_search to true
-    // WARNING: this will greatly increase the size of the search index
+    // By default, search is enabled, uses lunr.js, and runs on titles, keywords, and descriptions.
+    // To disable search completely, set enable_search to false.
     enable_search: true,
+    // To include the full body of documents in the Lunr search, set body_search to true
+    // WARNING: this will greatly increase the size of the search index
     body_search: false,
-    disable_lunr: false
+    // To use Algolia instead of Lunr, set search_tool to "algolia". 
+    // To use your own search tooling, set search_tool to "none".
+    search_tool: "lunr"
 };

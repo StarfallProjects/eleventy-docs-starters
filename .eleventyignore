@@ -1,1 +1,4 @@
-src/_snippets/
+src/snippets/
+src/_extra_layouts/
+src/_theme_blank/layouts/
+src/_theme_minimalist/layouts/

@@ -6,8 +6,8 @@ const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
    
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPassthroughCopy('src/extra_css');
-    eleventyConfig.addPassthroughCopy('src/extra_js');
+    eleventyConfig.addPassthroughCopy('src/_extra_css');
+    eleventyConfig.addPassthroughCopy('src/_extra_js');
     eleventyConfig.addPassthroughCopy('src/images');
     eleventyConfig.addPassthroughCopy('src/documents');
     eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/css`);
@@ -43,7 +43,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.on('afterBuild', () => {
 
         // implement search using Lunr.js
-        if(config.enable_search && !config.disable_lunr) {
+        if(config.enable_search && config.search_tool === "lunr") {
             let data = fs.readFileSync(`${config.output}/search.json`,'utf-8');
             let docs = JSON.parse(data);
 
@@ -74,7 +74,7 @@ module.exports = function(eleventyConfig) {
         dir: {
             input: "src",
             output: config.output,
-            includes: config.theme.name
+            includes: "_extra_layouts"
         }
     }
 };
