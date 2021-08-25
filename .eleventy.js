@@ -3,6 +3,7 @@ const { DateTime } = require("luxon");
 const fs = require('fs');
 const lunr = require('lunr');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
    
 
 module.exports = function(eleventyConfig) {
@@ -74,7 +75,7 @@ module.exports = function(eleventyConfig) {
         dir: {
             input: "src",
             output: config.output,
-            includes: "_extra_layouts"
+            includes: includesDir
         }
     }
 };

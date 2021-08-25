@@ -14,6 +14,10 @@ module.exports = {
     theme: {
         name: "_theme_blank"
     },
+    // Set to true to if you want Eleventy to look at your extra_layouts directory for document layouts
+    // NOTE: this feature is only needed if you want to override theme blocks.
+    // NOTE: only use if you are happy working with Nunjucks and intend to customize the site
+    enable_extra_layouts: false,
     // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.
     // Docs: 
     prism_theme: "custom",

@@ -6,7 +6,8 @@ description: "Customize a theme by overriding sections of the base layout."
 
 ## Quickstart
 
-Find the appropriate layout in `_extra_layouts`. Use this file to override theme blocks.
+1. Enable the `extra_layouts` directory by setting `enable_extra_layouts: true` in `_data/config.js`. This makes Eleventy look in `_extra_layouts` for your page layouts, instead of in the theme directory.
+2. Find the appropriate layout in `_extra_layouts`. Use this file to override theme blocks.
 
 ## Understand blocks
 
