@@ -1,0 +1,21 @@
+---
+permalink: search.json
+eleventyExcludeFromCollections: true
+layout: ""
+---
+{% if config.enable_search && config.search_tool != "algolia" %}
+[
+    {% for page in collections.all %}
+      {% if page.data.layout %}
+      {
+        "url": "{{ page.url }}",
+        "title": "{{ page.data.title }}",
+        "description": "{{ page.data.description }}",
+        "keywords": "{{ page.data.keywords }}",
+        "body": "{{ page.templateContent | squash }}"
+      }
+      {% if not loop.last %},{% endif %}
+      {% endif %}
+    {% endfor %}
+    ]
+{% endif %}

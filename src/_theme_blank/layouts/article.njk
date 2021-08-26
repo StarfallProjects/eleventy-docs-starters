@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+
+{% block head %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,4 +19,28 @@
     {% endswitch %}        
     <link rel="stylesheet" type="text/css" href="/{{ config.theme.name }}/css/styles.css" />
   </head>
-  
+{% endblock %}
+<body>
+
+{% if config.enable_search %}
+    {% block search %}
+        {% if config.search_tool === "lunr" %}
+            <p>Lunr</p>
+        {% elif config.search_tool === "algolia" %}
+            <p>Algolia</p>
+        {% else %}
+            <p>It looks like you're trying to create a custom search. You must either set `search_tool` to "lunr" or "algolia", or set it to "other" and override the search block with your own template.</p>
+        {% endif %}
+    {% endblock %}
+{% endif %}
+
+<main>
+<h1>{{ title }}</h1>
+{% if description %}<h2>{{ description }}</h2>{% endif %}
+
+{{ content | safe }}
+
+</main>
+<script src="/blank/js/main.js"></script>
+</body>
+

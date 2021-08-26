@@ -1,11 +1,14 @@
 const config = require("./src/_data/config.js");
 const { DateTime } = require("luxon");
+const fs = require('fs');
+const lunr = require('lunr');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
+const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
    
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPassthroughCopy('src/extra_css');
-    eleventyConfig.addPassthroughCopy('src/extra_js');
+    eleventyConfig.addPassthroughCopy('src/_extra_css');
+    eleventyConfig.addPassthroughCopy('src/_extra_js');
     eleventyConfig.addPassthroughCopy('src/images');
     eleventyConfig.addPassthroughCopy('src/documents');
     eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/css`);
@@ -35,8 +38,33 @@ module.exports = function(eleventyConfig) {
         return Math.min.apply(null, numbers);
     });
 
+    eleventyConfig.addFilter("squash", require(`./utils/squash.js`) );
 
 
+    eleventyConfig.on('afterBuild', () => {
+
+        // implement search using Lunr.js
+        if(config.enable_search && config.search_tool === "lunr") {
+            let data = fs.readFileSync(`${config.output}/search.json`,'utf-8');
+            let docs = JSON.parse(data);
+
+            let idx = lunr(function () {
+                this.field('title');
+                this.field('description')
+                this.field('keywords')
+                if(config.body_search) {
+                    this.field('body');
+                }
+        
+                docs.forEach(function (doc, idx) {
+                    doc.id = idx;
+                    this.add(doc); 
+                }, this);
+            });
+        
+            fs.writeFileSync(`${config.output}/index.json`, JSON.stringify(idx));
+        }
+    });
    
 
     return {
@@ -47,7 +75,7 @@ module.exports = function(eleventyConfig) {
         dir: {
             input: "src",
             output: config.output,
-            includes: config.theme.name
+            includes: includesDir
         }
     }
 };

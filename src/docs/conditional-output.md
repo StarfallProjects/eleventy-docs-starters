@@ -1,3 +1,7 @@
+---
+title: "Conditional outputs"
+---
+
 # Conditional outputs
 
 Conditional outputs allow you to change how you output your content depending on certain variables. For example, you might want to mark some of your content as `draft`, and make sure it's only included in test builds, not in builds for the live site.

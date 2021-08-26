@@ -1,3 +1,8 @@
 // DO NOT EDIT
 // DOCS:
-module.exports = "layouts/base.njk"
+const config = require("./config");
+
+module.exports = function() {
+        return "article.njk"
+};
+    
