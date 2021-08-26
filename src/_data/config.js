@@ -33,5 +33,7 @@ module.exports = {
     body_search: false,
     // To use Algolia instead of Lunr, set search_tool to "algolia". 
     // To use your own search tooling, set search_tool to "other".
-    search_tool: "lunr"
+    search_tool: "lunr",
+    // To turn off table of contents for the entire theme, set to false
+    toc: true
 };
