@@ -38,6 +38,10 @@
 <h1>{{ title }}</h1>
 {% if description %}<h2>{{ description }}</h2>{% endif %}
 
+{% if((config.toc === true) and (toc != false)) %}
+{{ content | toc | safe }}
+{% endif %}
+
 {{ content | safe }}
 
 </main>

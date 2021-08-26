@@ -2,6 +2,9 @@ const config = require("./src/_data/config.js");
 const { DateTime } = require("luxon");
 const fs = require('fs');
 const lunr = require('lunr');
+const markdownIt = require("markdown-it");
+const markdownItAnchor = require("markdown-it-anchor");
+const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
    
@@ -13,9 +16,17 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy('src/documents');
     eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/css`);
     eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/js`);
+
     eleventyConfig.setDataDeepMerge(true);
+    eleventyConfig.setLibrary("md", markdownIt({}).use(markdownItAnchor));
+
 
     eleventyConfig.addPlugin(syntaxHighlight);
+    eleventyConfig.addPlugin(eleventyPluginTOC,{
+        tags: ['h2','h3'],
+        heading: false,
+        listType: 'ul'
+    });
 
     // Date formats
     eleventyConfig.addFilter("readableDate", dateObj => {

@@ -3,7 +3,7 @@ permalink: search.json
 eleventyExcludeFromCollections: true
 layout: ""
 ---
-{% if config.enable_search && config.search_tool != "algolia" %}
+{% if (config.enable_search) and (config.search_tool != "algolia") %}
 [
     {% for page in collections.all %}
       {% if page.data.layout %}
