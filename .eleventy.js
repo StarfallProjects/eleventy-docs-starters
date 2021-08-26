@@ -4,6 +4,7 @@ const fs = require('fs');
 const lunr = require('lunr');
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItAdmonition = require("markdown-it-admonition");
 const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
@@ -18,7 +19,12 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/js`);
 
     eleventyConfig.setDataDeepMerge(true);
-    eleventyConfig.setLibrary("md", markdownIt({}).use(markdownItAnchor));
+    eleventyConfig.setLibrary("md", markdownIt({
+        html: true
+    })
+        .use(markdownItAnchor)
+        .use(markdownItAdmonition)
+    );
 
 
     eleventyConfig.addPlugin(syntaxHighlight);
