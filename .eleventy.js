@@ -4,8 +4,8 @@ const fs = require('fs');
 const lunr = require('lunr');
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const markdownItAbbr = require("markdown-it-abbr");
 const markdownItAdmonition = require("markdown-it-admonition");
-const markdownItDef = require("markdown-it-deflist");
 const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
@@ -25,7 +25,7 @@ module.exports = function(eleventyConfig) {
     })
         .use(markdownItAnchor)
         .use(markdownItAdmonition)
-        .use(markdownItDef)
+        .use(markdownItAbbr)
     );
 
 
