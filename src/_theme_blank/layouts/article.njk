@@ -29,7 +29,7 @@
         {% elif config.search_tool === "algolia" %}
             <p>Algolia</p>
         {% else %}
-            <p>It looks like you're trying to create a custom search. You must either set `search_tool` to "lunr" or "algolia", or set it to "none" and override the search block with your own template.</p>
+            <p>It looks like you're trying to create a custom search. You must either set `search_tool` to "lunr" or "algolia", or set it to "other" and override the search block with your own template.</p>
         {% endif %}
     {% endblock %}
 {% endif %}

@@ -1,6 +1,6 @@
 ---
 title: "Content reuse"
-
+keywords: []
 ---
 
 Content reuse allows you to use the same content in multiple places, but maintain it in just one file.

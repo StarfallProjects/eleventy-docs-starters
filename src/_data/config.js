@@ -32,6 +32,6 @@ module.exports = {
     // WARNING: this will greatly increase the size of the search index
     body_search: false,
     // To use Algolia instead of Lunr, set search_tool to "algolia". 
-    // To use your own search tooling, set search_tool to "none".
+    // To use your own search tooling, set search_tool to "other".
     search_tool: "lunr"
 };
