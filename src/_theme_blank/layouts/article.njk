@@ -34,6 +34,8 @@
     {% endblock %}
 {% endif %}
 
+{% include "partials/left-nav.njk" %}
+
 <main>
 <h1>{{ title }}</h1>
 {% if description %}<h2>{{ description }}</h2>{% endif %}
@@ -45,6 +47,6 @@
 {{ content | safe }}
 
 </main>
-<script src="/blank/js/main.js"></script>
+<script src="/_theme_blank/js/main.js"></script>
 </body>
 
