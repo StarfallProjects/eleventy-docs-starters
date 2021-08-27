@@ -1,0 +1,17 @@
+{% macro renderNavListItem(entry) %}
+    <a href="/{{ entry.slug | url }}"{% if entry.slug === page.fileSlug %}class="nav-item-active nav-item"{% else %}class="nav-item"{% endif %}>    
+    {% if entry.title %}{{ entry.title }}
+    {% else %}
+    {% for item in collections.all %}
+    {% if item.fileSlug === entry.slug %}
+    {{ item.data.title }}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    </a>
+    {% if entry.children.length %} 
+        {% for child in entry.children %}{{ renderNavListItem(child) }}{% endfor %}
+    {% endif %}
+{% endmacro %}
+
+{% for entry in navigation %}{{ renderNavListItem(entry) }}{% endfor %}
