@@ -4,7 +4,6 @@ const fs = require('fs');
 const lunr = require('lunr');
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
-const markdownItAbbr = require("markdown-it-abbr");
 const markdownItAdmonition = require("markdown-it-admonition");
 const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
@@ -25,7 +24,6 @@ module.exports = function(eleventyConfig) {
     })
         .use(markdownItAnchor)
         .use(markdownItAdmonition)
-        .use(markdownItAbbr)
     );
 
 
