@@ -4,25 +4,16 @@ module.exports = {
     description: "A collection of Eleventy starters for creating documentation sites.",
     keywords: ["documentation", "eleventy"],
     url: "",
+    build_time : new Date(),
     // Set the output directory
     output: "dist",
-    /* Choose a theme. Valid options are:
-       _theme_blank
-       _theme_minimalist
-
-    */    
-    theme: {
-        name: "_theme_blank"
-    },
-    // Set to true to if you want Eleventy to look at your extra_layouts directory for document layouts
-    // NOTE: this feature is only needed if you want to override theme blocks.
-    // NOTE: only use if you are happy working with Nunjucks and intend to customize the site
-    enable_extra_layouts: false,
-    // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.
+    // Syntax highlighting options. Leave as "" if you do not want syntax highlighting.    
     // Docs: 
+    // If using one of the default Prism themes, enter the name here. Enter "custom" if using a custom theme.
     prism_theme: "custom",
-    prism_file: "a11y-dark",
-    build_time : new Date(),
+    // If using a custom theme, you must place the .css file in `_assets/css/prism/`
+    // Provide the filename without extension here
+    prism_file: "a11y-dark",    
     // Search options
     // Docs: 
     // By default, search is enabled, uses lunr.js, and runs on titles, keywords, and descriptions.

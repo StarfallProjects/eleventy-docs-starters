@@ -1,9 +1,3 @@
-// WANRING: DO NOT EDIT THE FIRST TWO LINES
-{% set themeName = config.theme.name %}
-{% extends "src/" + themeName + "/layouts/article.njk" %}
-// END WARNING
-
-{% block head %}
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,14 +7,11 @@
 
     {% switch config.prism_theme %}
       {% case "custom" %}
-        <link href="/extra_css/prism/{{ config.prism_file }}.css" rel="stylesheet">
+        <link href="_assets/css/prism/{{ config.prism_file }}.css" rel="stylesheet">
       {% case "" %}
 
       {% default %}
         <link href="https://unpkg.com/prismjs@1.20.0/themes/{{ config.prism_theme }}.css" rel="stylesheet">
     {% endswitch %}        
-    <link rel="stylesheet" type="text/css" href="/{{ config.theme.name }}/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/_assets/css/styles.css" />
   </head>
-{% endblock %}
-
-
