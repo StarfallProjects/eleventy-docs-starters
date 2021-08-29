@@ -7,16 +7,12 @@ const markdownItAnchor = require("markdown-it-anchor");
 const markdownItAdmonition = require("markdown-it-admonition");
 const eleventyPluginTOC = require('@thedigitalman/eleventy-plugin-toc-a11y');
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const includesDir = (config.enable_extra_layouts ? "_extra_layouts" : `${config.theme.name}/layouts`);
+
    
 
 module.exports = function(eleventyConfig) {
-    eleventyConfig.addPassthroughCopy('src/_extra_css');
-    eleventyConfig.addPassthroughCopy('src/_extra_js');
-    eleventyConfig.addPassthroughCopy('src/images');
-    eleventyConfig.addPassthroughCopy('src/documents');
-    eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/css`);
-    eleventyConfig.addPassthroughCopy(`src/${config.theme.name}/js`);
+
+    eleventyConfig.addPassthroughCopy('src/_assets');
 
     eleventyConfig.setDataDeepMerge(true);
     eleventyConfig.setLibrary("md", markdownIt({
@@ -92,7 +88,7 @@ module.exports = function(eleventyConfig) {
         dir: {
             input: "src",
             output: config.output,
-            includes: includesDir
+            includes: "_includes"
         }
     }
 };
